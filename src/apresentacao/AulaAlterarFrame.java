@@ -6,6 +6,7 @@
 package apresentacao;
 
 import controle.AulaControle;
+import controle.TelaControle;
 import persistencia.AulaDao;
 
 /**
@@ -34,6 +35,7 @@ public class AulaAlterarFrame extends javax.swing.JFrame {
         ToolBarMenuTurma = new javax.swing.JToolBar();
         ButtonAtualizarAulaAlterar = new javax.swing.JButton();
         ButtonLimparAulaAlterar = new javax.swing.JButton();
+        ButtonVoltarAulaAlterar = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
         jLabelCodigoAulaAlterar = new javax.swing.JLabel();
         jSeparator2 = new javax.swing.JSeparator();
@@ -76,6 +78,18 @@ public class AulaAlterarFrame extends javax.swing.JFrame {
             }
         });
         ToolBarMenuTurma.add(ButtonLimparAulaAlterar);
+
+        ButtonVoltarAulaAlterar.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
+        ButtonVoltarAulaAlterar.setText("Voltar");
+        ButtonVoltarAulaAlterar.setFocusable(false);
+        ButtonVoltarAulaAlterar.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        ButtonVoltarAulaAlterar.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        ButtonVoltarAulaAlterar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ButtonVoltarAulaAlterarActionPerformed(evt);
+            }
+        });
+        ToolBarMenuTurma.add(ButtonVoltarAulaAlterar);
 
         javax.swing.GroupLayout PanelMenuTurmaLayout = new javax.swing.GroupLayout(PanelMenuTurma);
         PanelMenuTurma.setLayout(PanelMenuTurmaLayout);
@@ -203,6 +217,11 @@ public class AulaAlterarFrame extends javax.swing.JFrame {
         dao.preencherJTableCodigo(this);
     }//GEN-LAST:event_jComboBoxCodigoAulaItemStateChanged
 
+    private void ButtonVoltarAulaAlterarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonVoltarAulaAlterarActionPerformed
+       TelaControle.TelaAulaAlter.setVisible(false);
+       TelaControle.TelaAula.setVisible(true);
+    }//GEN-LAST:event_ButtonVoltarAulaAlterarActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -241,6 +260,7 @@ public class AulaAlterarFrame extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton ButtonAtualizarAulaAlterar;
     private javax.swing.JButton ButtonLimparAulaAlterar;
+    private javax.swing.JButton ButtonVoltarAulaAlterar;
     private javax.swing.JPanel PanelMenuTurma;
     private javax.swing.JToolBar ToolBarMenuTurma;
     private javax.swing.JComboBox jComboBoxCodigoAula;

@@ -1,6 +1,7 @@
 package apresentacao;
 
 import controle.AlunoControle;
+import controle.TelaControle;
 import modelo.entidades.Aluno;
 import persistencia.AlunoDao;
 import persistencia.TurmaDao;
@@ -26,6 +27,7 @@ public class AlunoFrame extends javax.swing.JFrame {
         jSeparator1 = new javax.swing.JToolBar.Separator();
         ButtonSalvar = new javax.swing.JButton();
         ButtonLimpar = new javax.swing.JButton();
+        ButtonVoltar = new javax.swing.JButton();
         PanelBodyAluno = new javax.swing.JPanel();
         LabelNomeAluno = new javax.swing.JLabel();
         jTextNomeAluno = new javax.swing.JTextField();
@@ -137,6 +139,18 @@ public class AlunoFrame extends javax.swing.JFrame {
             }
         });
         ToolBarMenuAluno.add(ButtonLimpar);
+
+        ButtonVoltar.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
+        ButtonVoltar.setText("Voltar");
+        ButtonVoltar.setFocusable(false);
+        ButtonVoltar.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        ButtonVoltar.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        ButtonVoltar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ButtonVoltarActionPerformed(evt);
+            }
+        });
+        ToolBarMenuAluno.add(ButtonVoltar);
 
         javax.swing.GroupLayout PanelMenuAlunoLayout = new javax.swing.GroupLayout(PanelMenuAluno);
         PanelMenuAluno.setLayout(PanelMenuAlunoLayout);
@@ -309,8 +323,13 @@ public class AlunoFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_jComboBoxTurmaAlunoActionPerformed
 
     private void ButtonAlterarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonAlterarActionPerformed
-        AlunoAlterarFrame alunoFrame = new AlunoAlterarFrame();
-        alunoFrame.setVisible(true);
+           if(TelaControle.TelaAlunoAlter != null){
+            TelaControle.TelaAlunoAlter.setVisible(true);
+        }else{
+          TelaControle.TelaAlunoAlter = new AlunoAlterarFrame();
+          TelaControle.TelaAlunoAlter.setVisible(true);          
+         }       
+        TelaControle.TelaAluno.setVisible(false);
     }//GEN-LAST:event_ButtonAlterarActionPerformed
 
     private void ButtonExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonExcluirActionPerformed
@@ -340,6 +359,11 @@ public class AlunoFrame extends javax.swing.JFrame {
         AlunoDao dao = new AlunoDao();
         dao.preencherCombo(this);
     }//GEN-LAST:event_formWindowOpened
+
+    private void ButtonVoltarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonVoltarActionPerformed
+        TelaControle.TelaAluno.setVisible(false);
+        TelaControle.TelaHome.setVisible(true);
+    }//GEN-LAST:event_ButtonVoltarActionPerformed
 
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
@@ -380,6 +404,7 @@ public class AlunoFrame extends javax.swing.JFrame {
     private javax.swing.JButton ButtonExcluir;
     private javax.swing.JButton ButtonLimpar;
     private javax.swing.JButton ButtonSalvar;
+    private javax.swing.JButton ButtonVoltar;
     private javax.swing.JLabel LabelNomeAluno;
     private javax.swing.JLabel LabelTituloAluno;
     private javax.swing.JLabel LabelTurmaAluno;

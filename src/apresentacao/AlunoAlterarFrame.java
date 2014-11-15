@@ -6,6 +6,7 @@
 package apresentacao;
 
 import controle.AlunoControle;
+import controle.TelaControle;
 import persistencia.AlunoDao;
 
 /**
@@ -35,6 +36,7 @@ public class AlunoAlterarFrame extends javax.swing.JFrame {
         ToolBarMenuTurma = new javax.swing.JToolBar();
         ButtonAtualizarAlunoAlterar = new javax.swing.JButton();
         ButtonLimparAlunoAlterar = new javax.swing.JButton();
+        ButtonVoltarAlunoAlterar1 = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
         jLabelCodigoAlunoAlterar = new javax.swing.JLabel();
         LabelNomeAlunoAlterar = new javax.swing.JLabel();
@@ -81,6 +83,18 @@ public class AlunoAlterarFrame extends javax.swing.JFrame {
             }
         });
         ToolBarMenuTurma.add(ButtonLimparAlunoAlterar);
+
+        ButtonVoltarAlunoAlterar1.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
+        ButtonVoltarAlunoAlterar1.setText("Voltar");
+        ButtonVoltarAlunoAlterar1.setFocusable(false);
+        ButtonVoltarAlunoAlterar1.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        ButtonVoltarAlunoAlterar1.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        ButtonVoltarAlunoAlterar1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ButtonVoltarAlunoAlterar1ActionPerformed(evt);
+            }
+        });
+        ToolBarMenuTurma.add(ButtonVoltarAlunoAlterar1);
 
         javax.swing.GroupLayout PanelMenuTurmaLayout = new javax.swing.GroupLayout(PanelMenuTurma);
         PanelMenuTurma.setLayout(PanelMenuTurmaLayout);
@@ -246,6 +260,11 @@ public class AlunoAlterarFrame extends javax.swing.JFrame {
         dao.preencherCodigoText(this);
     }//GEN-LAST:event_jComboBoxAlterarCodigoItemStateChanged
 
+    private void ButtonVoltarAlunoAlterar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonVoltarAlunoAlterar1ActionPerformed
+        TelaControle.TelaAlunoAlter.setVisible(false);
+        TelaControle.TelaAluno.setVisible(true);
+    }//GEN-LAST:event_ButtonVoltarAlunoAlterar1ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -284,6 +303,7 @@ public class AlunoAlterarFrame extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton ButtonAtualizarAlunoAlterar;
     private javax.swing.JButton ButtonLimparAlunoAlterar;
+    private javax.swing.JButton ButtonVoltarAlunoAlterar1;
     private javax.swing.JLabel LabelNomeAlunoAlterar;
     private javax.swing.JLabel LabelTurmaAlunoAlterar;
     private javax.swing.JPanel PanelMenuTurma;

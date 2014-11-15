@@ -1,6 +1,7 @@
 package apresentacao;
 
 import controle.AulaControle;
+import controle.TelaControle;
 import javax.swing.JTextField;
 import modelo.entidades.Aula;
 import persistencia.AulaDao;
@@ -26,6 +27,7 @@ public class AulaFrame extends javax.swing.JFrame {
         jSeparator1 = new javax.swing.JToolBar.Separator();
         ButtonSalvar = new javax.swing.JButton();
         ButtonLimpar = new javax.swing.JButton();
+        ButtonVoltar = new javax.swing.JButton();
         jPanelBodyAula = new javax.swing.JPanel();
         jLabelData = new javax.swing.JLabel();
         jDateChooserAula = new com.toedter.calendar.JDateChooser();
@@ -140,6 +142,18 @@ public class AulaFrame extends javax.swing.JFrame {
         });
         ToolBarMenuAula.add(ButtonLimpar);
 
+        ButtonVoltar.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
+        ButtonVoltar.setText("Voltar");
+        ButtonVoltar.setFocusable(false);
+        ButtonVoltar.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        ButtonVoltar.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        ButtonVoltar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ButtonVoltarActionPerformed(evt);
+            }
+        });
+        ToolBarMenuAula.add(ButtonVoltar);
+
         javax.swing.GroupLayout PanelMenuAulaLayout = new javax.swing.GroupLayout(PanelMenuAula);
         PanelMenuAula.setLayout(PanelMenuAulaLayout);
         PanelMenuAulaLayout.setHorizontalGroup(
@@ -227,7 +241,7 @@ public class AulaFrame extends javax.swing.JFrame {
                 .addGroup(jPanelPrensencaAulaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabelAlunoTurma)
                     .addComponent(jComboBoxTurmaAula, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(22, Short.MAX_VALUE))
         );
 
         jScrollPane1.setBackground(new java.awt.Color(204, 204, 204));
@@ -342,8 +356,13 @@ public class AulaFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_ButtonLimparActionPerformed
 
     private void ButtonAlterarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonAlterarActionPerformed
-       AulaAlterarFrame aulaFrame = new AulaAlterarFrame();
-       aulaFrame.setVisible(true);
+          if(TelaControle.TelaAulaAlter != null){
+            TelaControle.TelaAulaAlter.setVisible(true);
+        }else{
+          TelaControle.TelaAulaAlter = new AulaAlterarFrame();
+          TelaControle.TelaAulaAlter.setVisible(true);          
+         }       
+        TelaControle.TelaAula.setVisible(false);
     }//GEN-LAST:event_ButtonAlterarActionPerformed
 
     private void ButtonExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonExcluirActionPerformed
@@ -374,6 +393,11 @@ public class AulaFrame extends javax.swing.JFrame {
         AulaDao dao = new AulaDao();
         dao.preencherJTable(this);
     }//GEN-LAST:event_jComboBoxTurmaAulaItemStateChanged
+
+    private void ButtonVoltarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonVoltarActionPerformed
+          TelaControle.TelaAula.setVisible(false);
+          TelaControle.TelaHome.setVisible(true);
+    }//GEN-LAST:event_ButtonVoltarActionPerformed
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -412,6 +436,7 @@ public class AulaFrame extends javax.swing.JFrame {
     private javax.swing.JButton ButtonExcluir;
     private javax.swing.JButton ButtonLimpar;
     private javax.swing.JButton ButtonSalvar;
+    private javax.swing.JButton ButtonVoltar;
     private javax.swing.JLabel LabelTituloAula;
     private javax.swing.JPanel PanelMenuAula;
     private javax.swing.JPanel PanelTituloAula;

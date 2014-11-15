@@ -1,5 +1,8 @@
 package apresentacao;
 
+import controle.TelaControle;
+import static controle.TelaControle.TelaAula;
+
 public class HomeFrame extends javax.swing.JFrame {
 
     public HomeFrame() {
@@ -94,6 +97,11 @@ public class HomeFrame extends javax.swing.JFrame {
         jButtonAluno.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jButtonAlunoMouseClicked(evt);
+            }
+        });
+        jButtonAluno.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonAlunoActionPerformed(evt);
             }
         });
 
@@ -192,38 +200,72 @@ public class HomeFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_JButtonAulaActionPerformed
 
     private void JButtonTurmaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_JButtonTurmaMouseClicked
-        TurmaFrame Turma = new TurmaFrame();
-        Turma.setVisible(true);// TODO add your handling code here:
+        if(TelaControle.TelaTurma != null){
+            TelaControle.TelaTurma.setVisible(true);
+        }else{
+          TelaControle.TelaTurma = new TurmaFrame();
+          TelaControle.TelaTurma.setVisible(true);          
+         }       
+        TelaControle.TelaHome.setVisible(false);
     }//GEN-LAST:event_JButtonTurmaMouseClicked
 
     private void JMenuItemTurmaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JMenuItemTurmaActionPerformed
-        TurmaFrame Turma = new TurmaFrame();
-        Turma.setVisible(true);
+         if(TelaControle.TelaTurma != null){
+            TelaControle.TelaTurma.setVisible(true);
+        }else{
+          TelaControle.TelaTurma = new TurmaFrame();
+          TelaControle.TelaTurma.setVisible(true);          
+         }       
+        TelaControle.TelaHome.setVisible(false);
     }//GEN-LAST:event_JMenuItemTurmaActionPerformed
 
     private void JButtonTurmaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JButtonTurmaActionPerformed
-        // TODO add your handling code here:
+        // TO add your handling code here:
     }//GEN-LAST:event_JButtonTurmaActionPerformed
 
     private void JButtonAulaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_JButtonAulaMouseClicked
-        AulaFrame Aula = new AulaFrame();
-        Aula.setVisible(true);
+       if(TelaControle.TelaAula != null){
+            TelaControle.TelaAula.setVisible(true);
+        }else{
+          TelaControle.TelaAula = new AulaFrame();
+          TelaControle.TelaAula.setVisible(true);          
+         }       
+        TelaControle.TelaHome.setVisible(false);
     }//GEN-LAST:event_JButtonAulaMouseClicked
 
     private void jButtonAlunoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonAlunoMouseClicked
-        AlunoFrame Aluno = new AlunoFrame();
-        Aluno.setVisible(true);
+          if(TelaControle.TelaAluno != null){
+            TelaControle.TelaAluno.setVisible(true);
+        }else{
+          TelaControle.TelaAluno = new AlunoFrame();
+          TelaControle.TelaAluno.setVisible(true);          
+         }       
+        TelaControle.TelaHome.setVisible(false);
     }//GEN-LAST:event_jButtonAlunoMouseClicked
 
     private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
-        AlunoFrame Aluno = new AlunoFrame();
-        Aluno.setVisible(true);
+           if(TelaControle.TelaAluno != null){
+            TelaControle.TelaAluno.setVisible(true);
+        }else{
+          TelaControle.TelaAluno = new AlunoFrame();
+          TelaControle.TelaAluno.setVisible(true);          
+         }       
+        TelaControle.TelaHome.setVisible(false);
     }//GEN-LAST:event_jMenuItem1ActionPerformed
 
     private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
-        AulaFrame Aula = new AulaFrame();
-        Aula.setVisible(true);
+        if(TelaControle.TelaAula != null){
+            TelaControle.TelaAula.setVisible(true);
+        }else{
+          TelaControle.TelaAula = new AulaFrame();
+          TelaControle.TelaAula.setVisible(true);          
+         }       
+        TelaControle.TelaHome.setVisible(false);
     }//GEN-LAST:event_jMenuItem2ActionPerformed
+
+    private void jButtonAlunoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAlunoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButtonAlunoActionPerformed
 
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
@@ -252,7 +294,8 @@ public class HomeFrame extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new HomeFrame().setVisible(true);
+                TelaControle.TelaHome = new HomeFrame();
+                TelaControle.TelaHome.setVisible(true);
             }
         });
     }

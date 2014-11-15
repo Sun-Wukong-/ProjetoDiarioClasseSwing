@@ -1,5 +1,6 @@
 package apresentacao;
 
+import controle.TelaControle;
 import controle.TurmaControle;
 import modelo.entidades.Turma;
 
@@ -36,6 +37,7 @@ public class TurmaFrame extends javax.swing.JFrame {
         jSeparator1 = new javax.swing.JToolBar.Separator();
         ButtonSalvar = new javax.swing.JButton();
         ButtonLimpar = new javax.swing.JButton();
+        ButtonVoltar = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         jScrollPaneTurma = new javax.swing.JScrollPane();
         jTableTurma = new javax.swing.JTable();
@@ -230,6 +232,18 @@ public class TurmaFrame extends javax.swing.JFrame {
         });
         ToolBarMenuTurma.add(ButtonLimpar);
 
+        ButtonVoltar.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
+        ButtonVoltar.setText("Voltar");
+        ButtonVoltar.setFocusable(false);
+        ButtonVoltar.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        ButtonVoltar.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        ButtonVoltar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ButtonVoltarActionPerformed(evt);
+            }
+        });
+        ToolBarMenuTurma.add(ButtonVoltar);
+
         javax.swing.GroupLayout PanelMenuTurmaLayout = new javax.swing.GroupLayout(PanelMenuTurma);
         PanelMenuTurma.setLayout(PanelMenuTurmaLayout);
         PanelMenuTurmaLayout.setHorizontalGroup(
@@ -337,8 +351,13 @@ public class TurmaFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_ButtonLimparActionPerformed
 
     private void ButtonAlterarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonAlterarActionPerformed
-        TurmaAlterarFrame turmaFrame = new TurmaAlterarFrame();
-       turmaFrame.setVisible(true);
+        if(TelaControle.TelaTurmaAlter != null){
+            TelaControle.TelaTurmaAlter.setVisible(true);
+        }else{
+          TelaControle.TelaTurmaAlter = new TurmaAlterarFrame();
+          TelaControle.TelaTurmaAlter.setVisible(true);          
+         }       
+        TelaControle.TelaTurma.setVisible(false);
     }//GEN-LAST:event_ButtonAlterarActionPerformed
 
     private void ButtonExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonExcluirActionPerformed
@@ -355,6 +374,11 @@ public class TurmaFrame extends javax.swing.JFrame {
     private void jTableTurmaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTableTurmaMouseClicked
 
     }//GEN-LAST:event_jTableTurmaMouseClicked
+
+    private void ButtonVoltarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonVoltarActionPerformed
+        TelaControle.TelaTurma.setVisible(false);
+        TelaControle.TelaHome.setVisible(true);
+    }//GEN-LAST:event_ButtonVoltarActionPerformed
 
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
@@ -393,6 +417,7 @@ public class TurmaFrame extends javax.swing.JFrame {
     private javax.swing.JButton ButtonExcluir;
     private javax.swing.JButton ButtonLimpar;
     private javax.swing.JButton ButtonSalvar;
+    private javax.swing.JButton ButtonVoltar;
     private javax.swing.JLabel LabelDisciplinaTurma;
     private javax.swing.JLabel LabelPeriodoTurma;
     private javax.swing.JLabel LabelTituloTurma;

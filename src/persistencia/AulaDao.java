@@ -31,7 +31,7 @@ public class AulaDao {
             // prepared statement para inserção
             PreparedStatement stmt = connection.prepareStatement(sql);
             stmt.setString(1, aula.getData());
-            stmt.setBoolean(2, aula.getPresenca());
+            stmt.setString(2, aula.getPresencaS());
             stmt.setInt(3, aluno.getMatricula());
             // executa
             stmt.execute();
@@ -51,7 +51,7 @@ public class AulaDao {
         try {
          PreparedStatement stmt = connection
             .prepareStatement(sql);
-         stmt.setBoolean(1, aula.getPresenca());;
+         stmt.setString(1, aula.getPresencaS());;
          stmt.setInt(2, aula.getIdAula());
          stmt.execute();
          stmt.close();
